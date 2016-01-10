@@ -1,0 +1,5 @@
+/node_modules/
+app/components/home/home.js
+app/components/home/home.js.map
+app/boot.js
+app/boot.js.map
