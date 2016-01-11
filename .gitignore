@@ -10,3 +10,5 @@ app/components/news-list/news-list.js
 app/components/news-list/news-list.js.map
 app/components/page-container/page-container.js
 app/components/page-container/page-container.js.map
+/db/
+npm-debug*
