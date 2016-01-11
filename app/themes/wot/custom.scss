@@ -1,0 +1,48 @@
+body {
+    background-image:url('images/background.jpg'); 
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-color: #000000;  
+}
+
+.jumbotron
+{
+}
+
+.nav
+{
+    li
+    {
+        a
+        {
+            padding: 5px 15px 5px 15px;
+        }
+    }    
+}
+
+.middle-content-container
+{
+    background-image:url('images/rotation/content-header-01.jpg'); 
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size:100%;
+    
+    padding-top:300px;
+}
+
+
+/* below Bootstrap 4 breakpoint */
+@media screen and (max-width: 1199px) {
+    .middle-content-container
+    {
+        padding-top:250px;
+    }
+}
+
+/* below Bootstrap 3 breakpoint */
+@media screen and (max-width: 991px) {
+    .middle-content-container
+    {
+        padding-top:130px;
+    }
+}

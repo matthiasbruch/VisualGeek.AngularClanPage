@@ -3,3 +3,10 @@ app/components/home/home.js
 app/components/home/home.js.map
 app/boot.js
 app/boot.js.map
+/bower_components/
+app/components/main-navigation/main-navigation.js
+app/components/main-navigation/main-navigation.js.map
+app/components/news-list/news-list.js
+app/components/news-list/news-list.js.map
+app/components/page-container/page-container.js
+app/components/page-container/page-container.js.map

@@ -2,6 +2,8 @@
 
   <head>
     <base href="/">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
     <title>VisualGeek.AngularClanPage</title>
 
@@ -12,7 +14,9 @@
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
     <script src="node_modules/angular2/bundles/router.dev.js"></script>
     
-    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="app/themes/wot/css/bootstrap.css" rel="stylesheet">
+    <!--<link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">-->
+    <link href="app/themes/wot/custom.css" rel="stylesheet">
     
     <!-- 2. Configure SystemJS -->
     <script>
@@ -34,11 +38,9 @@
   <!-- 3. Display the application -->
   <body>
       
-    <div class="container" id="content" tabindex="-1">
-        <my-app>Loading...</my-app>
-    </div>
+    <page-container></page-container>
     
-    
+    <script src="bower_components/jQuery/dist/jquery.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
   </body>
 

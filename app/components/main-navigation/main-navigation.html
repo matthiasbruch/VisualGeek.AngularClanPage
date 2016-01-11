@@ -1,0 +1,24 @@
+<div>    
+    <div *ngFor="#section of MenuSections" class="panel panel-default">
+        <div class="panel-heading">{{section.Label}}</div>
+        <div class="panel-body">
+            <ul class="nav nav-pills nav-stacked">
+                <li *ngFor="#item of section.Items"><a [routerLink]="[item.RouterLink]"><span class="glyphicon glyphicon-triangle-right"></span> <span>{{item.Label}}</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Member</div>
+        <div class="panel-body">
+            Login
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">Online</div>
+        <div class="panel-body">
+            Stats
+        </div>
+    </div>
+</div>
