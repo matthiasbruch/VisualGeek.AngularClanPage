@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router'
 import {MainNavigationComponent} from '../main-navigation/main-navigation';
 import {NewsListComponent} from '../news-list/news-list';
+import {GuestbookComponent} from '../guestbook/guestbook';
 
 @Component({
     selector: 'page-container',
@@ -11,6 +12,7 @@ import {NewsListComponent} from '../news-list/news-list';
 
 @RouteConfig([
     { path: '/home', name: 'Home', component: NewsListComponent },
+    { path: '/guestbook', name: 'Guestbook', component: GuestbookComponent },
     { path: '/**', component: NewsListComponent }
 ])
 

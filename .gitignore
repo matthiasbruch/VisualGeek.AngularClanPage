@@ -13,3 +13,5 @@ app/components/page-container/page-container.js.map
 /db/
 npm-debug*
 startmongo.bat
+app/components/guestbook/guestbook.js
+app/components/guestbook/guestbook.js.map

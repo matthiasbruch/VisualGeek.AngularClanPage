@@ -1,11 +1,11 @@
 var express = require('express');
 var app = express();
 
-// app.get('/', function (req, res) {
-//   res.send('Hello World!');
-// });
-
 app.use(express.static('./'));
+
+app.get('/services/test', function (req, res) {
+  res.send('{ success: true }');
+});
 
 var port = 3000;
 

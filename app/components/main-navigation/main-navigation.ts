@@ -20,7 +20,7 @@ export class MainNavigationComponent
             // new MenuItem("Forum", "Forum"),
             // new MenuItem("History", "History"),
             // new MenuItem("Member", "Member"),
-            // new MenuItem("Guestbook", "Guestbook"),
+            new MenuItem("Guestbook", "Guestbook"),
             // new MenuItem("Downloads", "Downloads"),
             // new MenuItem("Public Server", "PublicServer")
         ]);
