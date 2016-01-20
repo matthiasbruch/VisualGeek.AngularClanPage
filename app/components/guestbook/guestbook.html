@@ -1,4 +1,29 @@
 <div>
+    <div class="panel panel-default">
+        <!--<div class="panel-heading" style="font-weight:bolder;">{{item.insertedAt | date:'mediumDate'}} | {{item.title}}</div>-->
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="guestBookName">Name:</label>
+                        <input type="text" class="form-control" id="guestBookName" [(ngModel)]="newEntry.author">
+                    </div>
+                    <div class="form-group">
+                        <label for="guestBookTitle">Betreff:</label>
+                        <input type="text" class="form-control" id="guestBookTitle" [(ngModel)]="newEntry.title">
+                    </div>
+                    <div class="form-group">
+                        <label for="guestBookMessage">Nachricht:</label>
+                        <textarea type="text" class="form-control" id="guestBookMessage" [(ngModel)]="newEntry.message"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="button" class="form-control" id="guestBookSubmit" value="Eintragen" (click)="createEntry()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div *ngFor="#item of items" class="panel panel-default">
         <div class="panel-heading" style="font-weight:bolder;">{{item.insertedAt | date:'mediumDate'}} | {{item.title}}</div>
         <div class="panel-body">

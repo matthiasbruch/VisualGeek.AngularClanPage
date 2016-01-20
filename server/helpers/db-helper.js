@@ -25,13 +25,13 @@ var dbHelper = function() {
         });
     };
 
-    var find = function(collectionName, query) {
+    var find = function(collectionName, query, sortStatement) {
         var deferred = Q.defer();
         
         getConnection(function(err, db) {
             var result = [];
 
-            var resultHandle = db.collection(collectionName).find();
+            var resultHandle = db.collection(collectionName).find(query).sort(sortStatement);
             resultHandle.each(function(err, doc) {
                 if (doc != null) {
                     result.push(doc);
@@ -53,6 +53,8 @@ var dbHelper = function() {
     // Inserting a single element to a collection.
     // [MB]
     var insertOne = function(collectionName, objectToInsert) {
+        var deferred = Q.defer();
+        
         getConnection(function(err, db) {
             db.collection(collectionName).insertOne(objectToInsert, function(err, result) {
                 
@@ -64,8 +66,12 @@ var dbHelper = function() {
                 }
                 
                 db.close();
+                
+                deferred.resolve();
             });
         });
+        
+        return deferred.promise;
     };
     
     return {
