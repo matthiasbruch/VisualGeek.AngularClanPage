@@ -10,14 +10,17 @@ import {Component} from 'angular2/core';
 export class GuestbookComponent {
 
     items : GuestBookEntry[];
+    newEntry: GuestBookEntry;
 
     constructor() {
         this.items = [];
         
-        this.getData();
+        this.newEntry = new GuestBookEntry('', '', 'sdf', false, new Date());
+
+        this.getData(false);
     }
     
-    getData () {
+    getData (clearList: boolean) {
         var that = this;
         
         jQuery.ajax({
@@ -25,6 +28,10 @@ export class GuestbookComponent {
             method: 'GET',
             dataType: 'json'
         }).then(function(loadedList) {
+            if (clearList) {
+                that.items.length = 0;
+            }
+            
             if (loadedList && loadedList.length) {
                 for (var i = 0; i < loadedList.length; i++) {
                     var loopedItem = loadedList[i];
@@ -34,14 +41,38 @@ export class GuestbookComponent {
                             loopedItem.message,
                             loopedItem.title,
                             loopedItem.author,
-                            loopedItem.approved,
-                            Date.parse(loopedItem.insertedAt)
+                            false,
+                            new Date()
                         )
                     );
                 }
             }
-        })
-    }
+        });
+    };
+    
+    createEntry (req, resp) {
+        if (this._validateGuestbookEntry(this.newEntry)) {
+            var that = this;
+            
+            // Resetting values.
+            // [MB]
+            this.newEntry.approved = false;
+            this.newEntry.insertedAt = new Date();
+            
+            jQuery.ajax({
+                url: 'services/guestbook/createEntry',
+                method: 'POST',
+                dataType: 'json',
+                data: this.newEntry
+            }).done(function(loadedList) {
+                that.getData(true);
+            });   
+        }
+    };
+    
+   _validateGuestbookEntry (resp) {
+       return true;
+   } 
 }
 
 class GuestBookEntry 
@@ -50,9 +81,9 @@ class GuestBookEntry
     title: string;
     author: string;
     approved: boolean;
-    insertedAt: number;
+    insertedAt: Date;
     
-    constructor(message: string, title: string, author: string, approved: boolean, insertedAt: number) {
+    constructor(message: string, title: string, author: string, approved: boolean, insertedAt: Date) {
         this.message = message;
         this.title = title;
         this.author = author;
