@@ -1,0 +1,23 @@
+{
+  "name": "VisualGeek.AngularClanPage",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Matthias Bruch . netzkern <matthias.bruch@netzkern.de>"
+  ],
+  "homepage": "https://github.com/matthiasbruch/VisualGeek.AngularClanPage",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jQuery": "~2.2.0"
+  }
+}

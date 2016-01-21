@@ -19,7 +19,7 @@ var dbHelper = function() {
                 console.log('###############################'.yellow);
             }
             else {
-                console.log("Connected correctly to server.".green);
+                // console.log("Connected correctly to server.".green);
                 logic(err, db);
             }
         });
@@ -41,8 +41,6 @@ var dbHelper = function() {
                     db.close();
                 }
             });
-            
-            console.log(result);
             
             return result;
         });

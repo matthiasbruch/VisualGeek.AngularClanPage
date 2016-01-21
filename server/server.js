@@ -1,6 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
+var folderSeperator = '\\';
+var workingFolderParts = __dirname.split(folderSeperator);
+workingFolderParts.pop();
+var workingFolder = workingFolderParts.join(folderSeperator) + folderSeperator;
+
 var guestbookService = require('./services/guestbook-service.js');
 var app = express();
 
@@ -12,9 +17,8 @@ guestbookService.registerRoutes(app);
 
 var port = 3000;
 
-
 app.get('*', function(req, res) {
-    res.sendfile('./index.html');
+    res.sendFile(workingFolder + 'index.html');
 });
 
 app.listen(port, function () {
