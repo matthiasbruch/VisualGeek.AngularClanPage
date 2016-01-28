@@ -15,3 +15,5 @@ npm-debug*
 startmongo.bat
 app/components/guestbook/guestbook.js
 app/components/guestbook/guestbook.js.map
+app/components/login-form/login-form.js
+app/components/login-form/login-form.js.map

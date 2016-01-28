@@ -1,10 +1,11 @@
 import {Component} from 'angular2/core';
 import {RouterLink} from 'angular2/router';
+import {LoginFormComponent} from '../login-form/login-form';
 
 @Component({
     selector: 'main-navigation',
     templateUrl: './app/components/main-navigation/main-navigation.html',
-    directives: [RouterLink]
+    directives: [RouterLink, LoginFormComponent]
 })
 
 export class MainNavigationComponent 
