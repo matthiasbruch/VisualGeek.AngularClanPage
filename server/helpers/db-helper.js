@@ -1,80 +1,47 @@
 var colors = require('colors');
 var Q = require('../../node_modules/q/q.js');
+var mongoose = require('mongoose');
 
 var dbHelper = function() {
+    
+    var connection = null;
+    
     // Todo: implement guestbook by: https://docs.mongodb.org/getting-started/node/insert/
-    var getConnection = function(logic) {
-        var MongoClient = require('mongodb').MongoClient;
+    var getConnection = function() {
+        var deferredConnection = Q.defer();
         
-        MongoClient.connect('mongodb://localhost:27017/test', function(err, db) {
-            if (err) {
-                console.log('###############################'.red);
-                console.log('DB-Error'.red);
-                console.log((err + '').red);
-                console.log('###############################'.red);
-            }
-            else if (!db) {
-                console.log('###############################'.yellow);
-                console.log('DB connection could NOT be opened'.yellow);
-                console.log('###############################'.yellow);
-            }
-            else {
-                // console.log("Connected correctly to server.".green);
-                logic(err, db);
-            }
-        });
-    };
-
-    var find = function(collectionName, query, sortStatement) {
-        var deferred = Q.defer();
-        
-        getConnection(function(err, db) {
-            var result = [];
-
-            var resultHandle = db.collection(collectionName).find(query).sort(sortStatement);
-            resultHandle.each(function(err, doc) {
-                if (doc != null) {
-                    result.push(doc);
+        if (connection) {
+            deferredConnection.resolve(connection);
+        }
+        else {
+            mongoose.connect('mongodb://localhost:27017/ClanPage');
+            connection = mongoose.connection;
+            
+            connection.on('error', function(err) {
+                if (err) {
+                    console.log('###############################'.red);
+                    console.log('DB-Error'.red);
+                    console.log((err + '').red);
+                    console.log('###############################'.red);
                 }
-                else {
-                    deferred.resolve(result);
-                    db.close();
-                }
+                
+                deferredConnection.resolve(null);
             });
             
-            return result;
-        });
-        
-        return deferred.promise;
-    };
-    
-    // Inserting a single element to a collection.
-    // [MB]
-    var insertOne = function(collectionName, objectToInsert) {
-        var deferred = Q.defer();
-        
-        getConnection(function(err, db) {
-            db.collection(collectionName).insertOne(objectToInsert, function(err, result) {
-                
-                if (err) {
-                    console.log(('Error while writing to db: ' + err).yellow);
-                }
-                else {
-                    console.log('Inserted dataset.'.green);
-                }
-                
-                db.close();
-                
-                deferred.resolve();
+            connection.once('open', function() {
+                console.log('###############################'.green);
+                console.log('DB connected'.green);
+                console.log('###############################'.green);
+                deferredConnection.resolve(connection);
             });
-        });
+        }
         
-        return deferred.promise;
+        return deferredConnection.promise;
     };
+
     
     return {
-        find: find,
-        insertOne: insertOne
+        getConnection: getConnection
     };
 }();
 
