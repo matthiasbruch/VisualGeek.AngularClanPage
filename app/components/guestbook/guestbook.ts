@@ -15,9 +15,13 @@ export class GuestbookComponent {
     constructor() {
         this.items = [];
         
-        this.newEntry = new GuestBookEntry('', '', 'sdf', false, new Date());
+        this.newEntry = new GuestBookEntry('', '', '', false, new Date());
 
         this.getData(false);
+    }
+    
+    clearEntry () {
+        this.newEntry = new GuestBookEntry('', '', '', false, new Date());
     }
     
     getData (clearList: boolean) {
@@ -65,6 +69,7 @@ export class GuestbookComponent {
                 dataType: 'json',
                 data: this.newEntry
             }).done(function(loadedList) {
+                that.clearEntry();
                 that.getData(true);
             });   
         }

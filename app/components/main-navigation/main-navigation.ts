@@ -18,10 +18,10 @@ export class MainNavigationComponent
         var mainSection = new MenuSection("Main", [
             new MenuItem("Home", "Home"),
             // new MenuItem("News", "News"),
-            // new MenuItem("Forum", "Forum"),
             // new MenuItem("History", "History"),
             // new MenuItem("Member", "Member"),
             new MenuItem("Guestbook", "Guestbook"),
+            new MenuItem("Forum", "Forum"),
             // new MenuItem("Downloads", "Downloads"),
             // new MenuItem("Public Server", "PublicServer")
         ]);

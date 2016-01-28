@@ -55,6 +55,8 @@ var guestbookService = function() {
     return {
         createEntry: createEntry,
         list: list,
+        
+        // Model
         GuestBookEntry: GuestBookEntry
     };
 }();
