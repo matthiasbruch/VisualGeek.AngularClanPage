@@ -3,7 +3,7 @@ var logHelper = require('../helpers/log-helper.js');
 var Q = require('../../node_modules/q/q.js');
 var mongoose = require('mongoose');
 
-var guestbookService = function() {
+var guestbookRepository = function() {
     var COLLECTION_NAME_GUESTBOOK = 'Guestbook';
     
     // Defining the mongoose entities.
@@ -61,4 +61,4 @@ var guestbookService = function() {
     };
 }();
 
-module.exports = guestbookService;
+module.exports = guestbookRepository;
