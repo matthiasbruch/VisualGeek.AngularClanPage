@@ -1,14 +1,5 @@
 <div>    
-    <div class="panel panel-default">
-        <!--<div class="panel-heading" style="font-weight:bolder;">{{item.insertedAt | date:'mediumDate'}} | {{item.title}}</div>-->
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <div>
-                        Forum-Name
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <forum-list *ngIf="listType.ForumsAndThreads"></forum-list>
+    <forum-thread-list *ngIf="listType.ForumsAndThreads"></forum-thread-list>
+    <forum-thread-content *ngIf="listType.ThreadContent"></forum-thread-content>
 </div>

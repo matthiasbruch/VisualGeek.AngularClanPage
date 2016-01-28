@@ -3,11 +3,11 @@
 import {Component} from 'angular2/core';
 
 @Component({
-    selector: 'forum-thread',
-    templateUrl: './app/components/forum/forum-thread.html'
+    selector: 'forum-thread-content',
+    templateUrl: './app/components/forum/forum-thread-content.html'
 })
 
-export class ForumListComponent {
+export class ForumThreadContentComponent {
 
     constructor() {
 

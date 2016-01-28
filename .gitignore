@@ -17,3 +17,7 @@ app/components/guestbook/guestbook.js
 app/components/guestbook/guestbook.js.map
 app/components/login-form/login-form.js
 app/components/login-form/login-form.js.map
+/app/components/forum/forum-thread-content.js.map
+/app/components/forum/forum-thread-content.js
+/app/components/forum/forum-thread-list.js.map
+/app/components/forum/forum-thread-list.js
