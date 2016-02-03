@@ -1,1 +1,0 @@
-{"version":3,"file":"forum-list.js","sourceRoot":"","sources":["forum-list.ts"],"names":["ForumListComponent","ForumListComponent.constructor"],"mappings":"AAAA,wDAAwD;;;;;;;;;;;;;;;;YAIxD;gBAOIA;gBAEAC,CAACA;gBATLD;oBAACA,gBAASA,CAACA;wBACPA,QAAQA,EAAEA,YAAYA;wBACtBA,WAAWA,EAAEA,wCAAwCA;qBACxDA,CAACA;uCAQDA;gBAADA,yBAACA;YAADA,CAACA,AAXD,IAWC;YAXD,mDAWC,CAAA"}

@@ -1,4 +1,13 @@
 <div>    
+    <div class="panel panel-danger" *ngIf="true">
+        <div class="panel-heading">Debug</div>
+        <div class="panel-body">
+            <button type="button" class="btn btn-default" (click)="createForum()">Create random forum</button>
+            <button type="button" class="btn btn-default" (click)="createThread()">Create random thread</button>
+            <button type="button" class="btn btn-default" (click)="createPost()">Create random post</button>
+        </div>
+    </div>
+    
     <forum-list *ngIf="listType.ForumsAndThreads"></forum-list>
     <forum-thread-list *ngIf="listType.ForumsAndThreads"></forum-thread-list>
     <forum-thread-content *ngIf="listType.ThreadContent"></forum-thread-content>

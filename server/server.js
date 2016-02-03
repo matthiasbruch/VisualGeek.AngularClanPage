@@ -7,6 +7,7 @@ workingFolderParts.pop();
 var workingFolder = workingFolderParts.join(folderSeperator) + folderSeperator;
 
 var guestbookService = require('./services/guestbook-service.js');
+var forumService = require('./services/forum-service.js');
 var app = express();
 
 app.use(express.static('./'));
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 guestbookService.registerRoutes(app);
+forumService.registerRoutes(app);
 
 var port = 3000;
 
