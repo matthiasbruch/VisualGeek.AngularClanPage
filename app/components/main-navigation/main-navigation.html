@@ -3,7 +3,7 @@
         <div class="panel-heading">{{section.Label}}</div>
         <div class="panel-body">
             <ul class="nav nav-pills nav-stacked">
-                <li *ngFor="#item of section.Items"><a [routerLink]="[item.RouterLink]"><span class="glyphicon glyphicon-triangle-right"></span> <span>{{item.Label}}</span></a></li>
+                <li *ngFor="#item of section.Items"><a [routerLink]="item.RouterLinkWithParams ? item.RouterLinkWithParams : [item.RouterLink]"><span class="glyphicon glyphicon-triangle-right"></span> <span>{{item.Label}}</span></a></li>
             </ul>
         </div>
     </div>

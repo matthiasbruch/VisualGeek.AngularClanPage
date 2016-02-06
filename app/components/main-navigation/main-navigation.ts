@@ -16,12 +16,12 @@ export class MainNavigationComponent
         this.MenuSections = [];
         
         var mainSection = new MenuSection("Main", [
-            new MenuItem("Home", "Home"),
+            new MenuItem("Home", "Home", null),
             // new MenuItem("News", "News"),
             // new MenuItem("History", "History"),
             // new MenuItem("Member", "Member"),
-            new MenuItem("Guestbook", "Guestbook"),
-            new MenuItem("Forum", "Forum"),
+            new MenuItem("Guestbook", "Guestbook", null),
+            new MenuItem("Forum", null, ["Forum", { forumId: "base" }, "ForumRoot"]),
             // new MenuItem("Downloads", "Downloads"),
             // new MenuItem("Public Server", "PublicServer")
         ]);
@@ -54,9 +54,11 @@ class MenuItem
 {
     Label: string;
     RouterLink: string;
+    RouterLinkWithParams: Object[];
     
-    constructor(label: string, routerLink: string) {
+    constructor(label: string, routerLink: string, routerLinkWithParams: Object[]) {
         this.Label = label;
         this.RouterLink = routerLink;
+        this.RouterLinkWithParams = routerLinkWithParams;
     }    
 }

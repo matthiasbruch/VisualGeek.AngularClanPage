@@ -1,83 +1,68 @@
 /// <reference path="../../../ext/definitions/jquery" />
 
 import {Component} from 'angular2/core';
-import {ForumListComponent} from './forum-list';
-import {ForumThreadListComponent} from './forum-thread-list';
+import {RouterLink} from 'angular2/router';
+import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
+import {ForumListContainerComponent} from './forum-list-container';
 import {ForumThreadContentComponent} from './forum-thread-content';
+import {CreateThreadFormComponent} from './create-thread-form';
 
 @Component({
     selector: 'forum',
     templateUrl: './app/components/forum/forum.html',
-    directives: [ForumListComponent, ForumThreadListComponent, ForumThreadContentComponent]
+    directives: [RouterLink, ROUTER_DIRECTIVES, ForumListContainerComponent, ForumThreadContentComponent]
 })
 
-export class ForumComponent {
+@RouteConfig([
+    { path:'/list', name: 'ForumRoot', component: ForumListContainerComponent, useAsDefault: true },
+    { path:'/create-thread', name: 'ForumCreateThread', component: CreateThreadFormComponent }
+])
 
-    listType = {
-        ForumsAndThreads: true,
-        ThreadContent: true    
-    }
+export class ForumComponent {
 
     constructor() {
 
     }
     
-    createForum () {
-        
-        var newForum = {
-            label: 'Mein Label ' + new Date().getTime(),
-            name: 'name_' + new Date().getTime(),
-            private: true
-        };
-                
-        jQuery.ajax({
-            url: 'services/forum/storeForum',
-            method: 'POST',
-            dataType: 'json',
-            data: newForum
-        }).done(function(result) {
-            console.log(result);
-            // that.clearEntry();
-            // that.getData(true);
-        });
-    }
-    
-    createThread () {
-        
-        var newThread = {
-            label: 'Mein Label ' + new Date().getTime(),
-            name: 'name_' + new Date().getTime()
-        };
-                
-        jQuery.ajax({
-            url: 'services/forum/storeThread',
-            method: 'POST',
-            dataType: 'json',
-            data: newThread
-        }).done(function(result) {
-            console.log(result);
-            // that.clearEntry();
-            // that.getData(true);
-        });
-    }
-    
-    createPost () {
-        
-        var newPost = {
-            title: 'Mein Titel ' + new Date().getTime(),
-            content: 'lorem ipsum ' + new Date().getTime()
-        };               
-                
-        jQuery.ajax({
-            url: 'services/forum/storePost',
-            method: 'POST',
-            dataType: 'json',
-            data: newPost
-        }).done(function(result) {
-            console.log(result);
-            // that.clearEntry();
-            // that.getData(true);
-        });
-    }
+    // createForum () {
+    //     
+    //     var newForum = {
+    //         label: 'Mein Label ' + new Date().getTime(),
+    //         name: 'name_' + new Date().getTime(),
+    //         private: true
+    //     };
+    //             
+    //     jQuery.ajax({
+    //         url: 'services/forum/storeForum',
+    //         method: 'POST',
+    //         dataType: 'json',
+    //         data: newForum
+    //     }).done(function(result) {
+    //         console.log(result);
+    //         // that.clearEntry();
+    //         // that.getData(true);
+    //     });
+    // }
+    // 
+
+    // 
+    // createPost () {
+    //     
+    //     var newPost = {
+    //         title: 'Mein Titel ' + new Date().getTime(),
+    //         content: 'lorem ipsum ' + new Date().getTime()
+    //     };               
+    //             
+    //     jQuery.ajax({
+    //         url: 'services/forum/storePost',
+    //         method: 'POST',
+    //         dataType: 'json',
+    //         data: newPost
+    //     }).done(function(result) {
+    //         console.log(result);
+    //         // that.clearEntry();
+    //         // that.getData(true);
+    //     });
+    // }
     
 }

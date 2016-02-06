@@ -14,8 +14,8 @@ import {ForumComponent} from '../forum/forum';
 @RouteConfig([
     { path: '/home', name: 'Home', component: NewsListComponent },
     { path: '/guestbook', name: 'Guestbook', component: GuestbookComponent },
-    { path: '/forum', name: 'Forum', component: ForumComponent },
-    { path: '/**', component: NewsListComponent }
+    { path: '/forum/:forumId/...', name: 'Forum', component: ForumComponent },
+    { path: '/**', redirectTo: ['Home'] }
 ])
 
 export class PageContainerComponent { }

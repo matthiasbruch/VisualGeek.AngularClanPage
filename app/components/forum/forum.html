@@ -8,7 +8,9 @@
         </div>
     </div>
     
-    <forum-list *ngIf="listType.ForumsAndThreads"></forum-list>
-    <forum-thread-list *ngIf="listType.ForumsAndThreads"></forum-thread-list>
-    <forum-thread-content *ngIf="listType.ThreadContent"></forum-thread-content>
+    <button type="button" class="btn btn-default" [routerLink]="['ForumCreateThread']" style="margin-bottom:10px;">Create thread</button>
+
+    <div style="border-color:red;">
+        <router-outlet></router-outlet>
+    </div>
 </div>

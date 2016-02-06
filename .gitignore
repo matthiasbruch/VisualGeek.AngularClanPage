@@ -23,3 +23,9 @@ app/components/login-form/login-form.js.map
 /app/components/forum/forum-thread-list.js
 /app/components/forum/forum.js
 /app/components/forum/forum.js.map
+/app/components/forum/forum-list-container.js
+/app/components/forum/forum-list-container.js.map
+/app/components/forum/forum-list.js
+/app/components/forum/forum-list.js.map
+/app/components/forum/create-thread-form.js
+/app/components/forum/create-thread-form.js.map
