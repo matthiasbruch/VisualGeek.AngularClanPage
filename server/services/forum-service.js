@@ -7,8 +7,8 @@ var forumService = function() {
     
     var getForumListByParent = function(req, resp) {
         
-        var parentForumId = req.parentForumId || BASE_FORUM_ID;
-        var includePrivate = req.includePrivate;
+        var parentForumId = req.query.parentForumId || BASE_FORUM_ID;
+        var includePrivate = req.query.includePrivate;
         
         forumRepo.getForumListByParent(parentForumId, includePrivate).then(function(listOfForums) {
             resp.json(listOfForums);
@@ -19,8 +19,8 @@ var forumService = function() {
     
     var getThreadListByParent = function(req, resp) {
         
-        var parentForumId = req.parentForumId || BASE_FORUM_ID;
-        
+        var parentForumId = req.query.parentForumId || BASE_FORUM_ID;
+        console.log('by thread:' + parentForumId);
         forumRepo.getThreadListByParent(parentForumId).then(function(listOfThreads) {
             resp.json(listOfThreads);
             resp.end();
@@ -86,7 +86,7 @@ var forumService = function() {
     
     var getPostsByThread = function(req, resp) {
 
-        forumRepo.getPostsByThread(req.threadId || BASE_FORUM_ID).then(function(loadedThreads) {
+        forumRepo.getPostsByThread(req.query.threadId || BASE_FORUM_ID).then(function(loadedThreads) {
             resp.json(loadedThreads);
             resp.end();
         });

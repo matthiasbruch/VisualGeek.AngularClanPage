@@ -48,8 +48,13 @@ body {
 }
 
 forum-list {    
-    .panel-body {
-        background-color:#999999;
-        color:#000000;
+    // .panel-body {
+    //     background-color:#999999;
+    //     color:#000000;
+    // }
+    
+    .forum-list-forum
+    {
+        cursor:pointer;
     }
 }

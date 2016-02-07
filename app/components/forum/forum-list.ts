@@ -1,6 +1,7 @@
 /// <reference path="../../../ext/definitions/jquery" />
 
-import {Component} from 'angular2/core';
+import {Component, Injector} from 'angular2/core';
+import {Router, RouteParams} from 'angular2/router';
 
 @Component({
     selector: 'forum-list',
@@ -10,10 +11,15 @@ import {Component} from 'angular2/core';
 export class ForumListComponent {
 
     items: Forum[];
+    forumId: string;
 
-    constructor() {
+    constructor(private _router: Router, injector: Injector) {
         this.items = [];
-                
+
+        // Todo: Improve this ... worst case: loop until found.
+        var routeParams = injector.parent.parent.parent.get(RouteParams);
+        this.forumId = routeParams.get('forumId');
+
         this.getData();
     }
 
@@ -21,11 +27,13 @@ export class ForumListComponent {
         var that = this;
         
         jQuery.ajax({
-            url: 'services/forum/getForumListByParent', 
+            url: 'services/forum/getForumListByParent?parentForumId=' + this.forumId, 
             method: 'GET',
             dataType: 'json'
         }).then(function(loadedList) {
-             if (loadedList && loadedList.length) {
+            that.items.length = 0;
+            
+            if (loadedList && loadedList.length) {
                 for (var i = 0; i < loadedList.length; i++) {
                     var loopedItem = loadedList[i];
                     
@@ -44,6 +52,10 @@ export class ForumListComponent {
             }
         });
     };
+    
+    goToForum (forumId) {
+        this._router.parent.navigate( ['Forum', { forumId: forumId }, 'List'] );
+    }
     
 }
 

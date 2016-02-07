@@ -1,13 +1,4 @@
 <div>    
-    <div class="panel panel-danger" *ngIf="true">
-        <div class="panel-heading">Debug</div>
-        <div class="panel-body">
-            <button type="button" class="btn btn-default" (click)="createForum()">Create random forum</button>
-            <button type="button" class="btn btn-default" (click)="createThread()">Create random thread</button>
-            <button type="button" class="btn btn-default" (click)="createPost()">Create random post</button>
-        </div>
-    </div>
-    
     <button type="button" class="btn btn-default" [routerLink]="['ForumCreateThread']" style="margin-bottom:10px;">Create thread</button>
 
     <div style="border-color:red;">

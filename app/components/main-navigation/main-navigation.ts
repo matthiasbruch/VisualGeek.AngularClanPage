@@ -21,7 +21,7 @@ export class MainNavigationComponent
             // new MenuItem("History", "History"),
             // new MenuItem("Member", "Member"),
             new MenuItem("Guestbook", "Guestbook", null),
-            new MenuItem("Forum", null, ["Forum", { forumId: "base" }, "ForumRoot"]),
+            new MenuItem("Forum", null, ["Forum", { forumId: "base" }, "List"]),
             // new MenuItem("Downloads", "Downloads"),
             // new MenuItem("Public Server", "PublicServer")
         ]);

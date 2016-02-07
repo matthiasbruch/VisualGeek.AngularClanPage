@@ -1,7 +1,7 @@
 /// <reference path="../../../ext/definitions/jquery" />
 
 import {Component} from 'angular2/core';
-import {RouterLink} from 'angular2/router';
+import {RouterLink, RouteParams} from 'angular2/router';
 import {RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 import {ForumListContainerComponent} from './forum-list-container';
 import {ForumThreadContentComponent} from './forum-thread-content';
@@ -14,14 +14,14 @@ import {CreateThreadFormComponent} from './create-thread-form';
 })
 
 @RouteConfig([
-    { path:'/list', name: 'ForumRoot', component: ForumListContainerComponent, useAsDefault: true },
+    { path:'/list', name: 'List', component: ForumListContainerComponent, useAsDefault: true },
     { path:'/create-thread', name: 'ForumCreateThread', component: CreateThreadFormComponent }
 ])
 
 export class ForumComponent {
 
-    constructor() {
-
+    constructor(routeParams: RouteParams) {
+        
     }
     
     // createForum () {

@@ -1,6 +1,7 @@
 /// <reference path="../../../ext/definitions/jquery" />
 
-import {Component} from 'angular2/core';
+import {Component, Injector} from 'angular2/core';
+import {Router, RouteParams} from 'angular2/router';
 
 @Component({
     selector: 'forum-thread-list',
@@ -10,10 +11,15 @@ import {Component} from 'angular2/core';
 export class ForumThreadListComponent {
 
     items: Thread[];
+    forumId: string;
 
-    constructor() {
+    constructor(private _router: Router, injector: Injector) {
         this.items = [];
                 
+        // Todo: Improve this ... worst case: loop until found.
+        var routeParams = injector.parent.parent.parent.get(RouteParams);
+        this.forumId = routeParams.get('forumId');
+        
         this.getData();
     }
 
@@ -21,7 +27,7 @@ export class ForumThreadListComponent {
         var that = this;
         
         jQuery.ajax({
-            url: 'services/forum/getThreadListByParent', 
+            url: 'services/forum/getThreadListByParent?parentForumId=' + this.forumId, 
             method: 'GET',
             dataType: 'json'
         }).then(function(loadedList) {
