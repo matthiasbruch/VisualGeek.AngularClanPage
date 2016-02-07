@@ -27,9 +27,12 @@ export class ForumThreadListComponent {
         var that = this;
         
         jQuery.ajax({
-            url: 'services/forum/getThreadListByParent?parentForumId=' + this.forumId, 
+            url: 'services/forum/getThreadListByParent', 
             method: 'GET',
-            dataType: 'json'
+            dataType: 'json',
+            data: {
+                parentForumId: this.forumId
+            }
         }).then(function(loadedList) {
              if (loadedList && loadedList.length) {
                 for (var i = 0; i < loadedList.length; i++) {
@@ -50,6 +53,9 @@ export class ForumThreadListComponent {
         });
     };
     
+    goToThread (threadId) {
+        this._router.parent.navigate( ['Forum', { forumId: this.forumId }, 'WatchThread', { threadId: threadId }] );
+    }
 }
 
 class Thread 

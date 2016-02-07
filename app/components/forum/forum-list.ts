@@ -27,9 +27,12 @@ export class ForumListComponent {
         var that = this;
         
         jQuery.ajax({
-            url: 'services/forum/getForumListByParent?parentForumId=' + this.forumId, 
+            url: 'services/forum/getForumListByParent', 
             method: 'GET',
-            dataType: 'json'
+            dataType: 'json',
+            data: {
+                parentForumId: this.forumId
+            }
         }).then(function(loadedList) {
             that.items.length = 0;
             

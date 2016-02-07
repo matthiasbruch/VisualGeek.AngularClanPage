@@ -1,5 +1,5 @@
 <div>    
-    <div *ngFor="#item of items" class="panel panel-default">
+    <div *ngFor="#item of items" class="panel panel-default" (click)="goToThread(item.threadId)">
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-12">

@@ -15,7 +15,8 @@ import {CreateThreadFormComponent} from './create-thread-form';
 
 @RouteConfig([
     { path:'/list', name: 'List', component: ForumListContainerComponent, useAsDefault: true },
-    { path:'/create-thread', name: 'ForumCreateThread', component: CreateThreadFormComponent }
+    { path:'/create-thread', name: 'CreateThread', component: CreateThreadFormComponent },
+    { path:'/watch-thread/:threadId', name: 'WatchThread', component: ForumThreadContentComponent }
 ])
 
 export class ForumComponent {

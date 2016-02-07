@@ -1,18 +1,24 @@
 /// <reference path="../../../ext/definitions/jquery" />
 
-import {Component} from 'angular2/core';
+import {Component, Injector} from 'angular2/core';
+import {Router, RouteParams} from 'angular2/router';
+import {CreatePostQuickFormComponent} from './create-post-quickform';
 
 @Component({
     selector: 'forum-thread-content',
-    templateUrl: './app/components/forum/forum-thread-content.html'
+    templateUrl: './app/components/forum/forum-thread-content.html',
+    directives: [CreatePostQuickFormComponent]
 })
 
 export class ForumThreadContentComponent {
 
     items: Post[];
+    threadId: string;
 
-    constructor() {
+    constructor(private _router: Router, routeParams: RouteParams) {
         this.items = [];
+                
+        this.threadId = routeParams.get('threadId');
                 
         this.getData();
     }
@@ -23,7 +29,10 @@ export class ForumThreadContentComponent {
         jQuery.ajax({
             url: 'services/forum/getPostsByThread', 
             method: 'GET',
-            dataType: 'json'
+            dataType: 'json',
+            data: {
+                threadId: this.threadId
+            }
         }).then(function(loadedList) {
              if (loadedList && loadedList.length) {
                 for (var i = 0; i < loadedList.length; i++) {
